@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block menubar %}
+<div class="col-2 ">
+  <div><a href="{% url 'login' %}" id="logIn" style="background-color: skyblue;">로그인</a></div>
+  <div><a href="{% url 'signup' %}" id="signUp" style="background-color: rgb(35, 139, 180);">회원가입</a></div>
+  <div><a href="{% url 'logout' %}" class="d-none" id="logOut" style="background-color: rgb(72, 167, 111);">로그아웃</a></div>  
+  <div><a href="{% url 'mypage' %}" class="d-none" id="mypage" style="background-color: rgb(41, 74, 219);">마이페이지</a></div>
+</div>
+{% endblock %}
+{% block content %}
+<hr/>
+<h1>이곳은 메인페이지 입니다.</h1>
+<hr/>
+<h2>Done</h2>
+<ul>
+  <li>회원가입</li>
+  <li>로그인</li>
+  <li>로그아웃</li>
+  <li>세션체크</li>
+  <li>비번변경</li>
+  <li>회원탈퇴</li>
+  <li>마이페이지</li>
+  <li>비번 유효성검사</li>
+  <li>아이디/비번 중복체크</li>
+</ul>
+<hr/>
+<h2>Doing</h2>
+<ul style="color: rgb(197, 195, 72);" >
+  <li>UI 작업</li>
+</ul>
+<hr/>
+<h2>Will do</h2>
+<ul style="color: red;">
+  <li>아이디/비번/폰번호/이메일 정규식</li>
+  <li>주소 세분화</li>
+  <li>장바구니</li>
+</ul>
+{% if session %}
+<script>
+  $('#logIn').addClass('d-none')
+  $('#signUp').addClass('d-none')
+  $('#logOut').removeClass('d-none')
+  $('#mypage').removeClass('d-none')
+</script>
+{% endif %}
+{% if messages %}
+  {% for message in messages %}
+  <script>
+    alert('{{message.message}}')
+  </script>
+  {% endfor %}
+{% endif %}
+{% if logout %}
+<script>
+  alert('{{logout}}')
+</script>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% block content %}
+<form action="{% url 'sign_com' %}" method="POST">
+  {% csrf_token %}
+  <section class="form-group justify-content-center">
+    <article class="text-center">
+      <h1>회원가입 페이지 입니다.</h1>
+      <h3>회원 정보를 입력해주세요.</h3>
+    </article>
+    <article class="mb-3">
+      <label for="name">이름</label>
+      <input type="text" class="form-control inputSize" name="name" id="name" placeholder="이름을 입력해주세요." pattern="^[가-핳]{1,10}$">
+    </article>
+    <article class="mb-3">
+      <div>
+        <label for="id">아이디</label>
+        <input type="text" class="form-control inputSize" name="id" id="id" placeholder="아이디를 입력해주세요." pattern="^[A-Za-z]{1}[A-Za-z0-9]{4,10}$">
+      </div>
+      <span class="btnSize">
+        <button class="form-control btn btn-outline-success btnSize" type="button" id="idck" onclick="idcks()">중복체크</button>
+      </span>
+      <span id="id_div"></span>
+    </article>
+    <article class="mb-3">
+      <label>비밀번호</label>
+      <input type="password" class="form-control pw inputSize" name="pw" id="pw1" placeholder="비밀번호를 입력해주세요." pattern="^[a-zA-Z0-9]{8,20}$">
+    </article>
+    <article class="mb-3">
+      <label>비밀번호 확인</label>
+      <input type="password" class="form-control pw inputSize" name="pw2" id="pw2" placeholder="비밀번호를 재입력해주세요." pattern="^[a-zA-Z0-9]{8,20}$">
+      <div id="pw_div"></div>
+    </article>
+    <article class="mb-3">
+      <label>이메일 주소</label>
+      <input type="text" class="form-control inputSize" name="email" placeholder="이메일 ID" pattern="^[a-z0-9_+.-]+@([a-z0-9-]+\.)+[a-z0-9]{2,4}$">
+    </article>
+    <article class="mb-3">
+      <label>배송 주소</label>
+      <input type="text" class="form-control inputSize" name="address" placeholder="주소를 입력해주세요.">
+    </article>
+    <article class="mb-3">
+      <label>성별</label>
+      <select class="form-select mb-3 selecterSize" name="gender">
+        <option selected>선택해주세요.</option>
+        <option value="M">남성</option>
+        <option value="W">여성</option>
+      </select>
+    </article>
+    <div class="text-center">
+      <button class="signBtnSize btn btn-success">회원가입 하기</button>
+    </div>
+  </section>
+</form>
+<script>
+  function idcks(){
+    $.post(
+    "idCk",
+    {id_:$('#id').val(), 
+    csrfmiddlewaretoken: document.getElementsByName('csrfmiddlewaretoken')[0].value},
+    function(idid){
+      $('#id_div').html(idid)
+    }
+  );
+};
+  $('.pw').focusout(function () {
+    $.post(
+      "pwCk",
+      {pwd1:$("#pw1").val(), pwd2:$("#pw2").val(), csrfmiddlewaretoken: document.getElementsByName('csrfmiddlewaretoken')[0].value},
+      function(pwpw){
+        $("#pw_div").html(pwpw)
+      }
+    )
+  });
+</script>
+{% for message in messages %}
+<script>
+  alert('{{message.message}}')
+</script>
+{% endfor %}
+{% endblock %}
