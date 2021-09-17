@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
+* {
+  font-family: 'Gowun Dodum', sans-serif;
+}
+
+body {
+  height: 100vh;
+}
+
+input, select {
+  text-align: center;
+}
+
+#name {
+  ime-mode: active;
+}
+
+#logo {
+  color: #39c979;
+}
+
+.nav_bar, #top_menu {
+  font-weight: bold;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.home_link:hover {
+  color: black;
+}
+
+.mypage_:hover {
+  color: #39c979;
+}
+
+a:hover {
+  color: white;
+}
+
+#id_div, #pw_div {
+  color: red;
+}
+
+.btnSize {
+  width: 10vw;
+}
+
+.signBtnSize {
+  width: 35vw;
+}
+
+.inputSize {
+  width: 400px;
+}
+
+.selecterSize {
+  width: 20vw;
+}
+footer {
+  text-align: center;
+  border-top: 1px solid black;
+  padding-top: 10px;
+  font-size: 15px;
+
+}

@@ -38,7 +38,7 @@ def sign_com(req): # 회원가입 후 동작하는 함수(함수만 동작)
     username = req.POST.get('name')
     pw = req.POST.get('pw')
     email = req.POST.get('email')
-    address = req.POST.get('address')
+    address = str(req.POST.get('address')) + " " + str(req.POST.get('address_detail'))
     usergender = req.POST.get('gender')
     # data는 넘길 값
       # 변수에 하나라도 빈 값이 있다면 error에 값을 넣어 오류를 출력할 것
