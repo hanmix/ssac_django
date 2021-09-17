@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block menubar %}
+<div class="col-2 ">
+  <div><a href="{% url 'logout' %}" class="logout_link d-none" id="logOut" style="background-color: rgb(72, 167, 111);">로그아웃</a></div>
+  <div><a href="{% url 'pwChange' %}" class="pwChange_link d-none" id="pwChange" style="background-color: rgb(115, 156, 48);">비밀번호 변경</a></div>
+  <div><a href="{% url 'withdrawal' %}" class="withdrawal_link d-none" id="withdrawal" style="background-color: rgb(209, 77, 25);">믿기 어려운 회원탈퇴 하러가기 ㅠㅠ</a></div>
+  <div><a href="{% url 'mypage' %}" class="mypage_link d-none" id="mypage" style="background-color: rgb(41, 74, 219);">마이페이지</a></div>
+</div>
+{% endblock %}
+
+{% block content %}
+<h1>내 정보 보기</h1>
+{% if myInfo %}
+  {% for my in myInfo %}
+    <label for="infoName">이름</label>
+    <div id="infoName">{{my.username}}</div>
+
+    <label for="infoId">아이디</label>
+    <div id="infoId">{{my.userid}}</div>
+
+    <label for="infoGender">성별</label>
+    <div id="infoGender">{{my.gender}}</div>
+
+    <label for="infoEmail">이메일</label>
+    <div id="infoEmail">{{my.useremail}}</div>
+
+    <label for="infoAddress">주소</label>
+    <div id="infoAddress">{{my.useraddress}}</div>
+
+    <label for="inforegistered">가입날짜</label>
+    <div id="inforegistered">{{my.regiserTime}}</div>
+  {% endfor %}
+{% endif %}
+
+
+
+{% if mypage %}
+<script>
+  $('#logOut').removeClass('d-none')
+  $('#pwChange').removeClass('d-none')
+  $('#withdrawal').removeClass('d-none')
+  $('#mypage').removeClass('d-none')
+</script>
+{% endif %}
+{% if messages %}
+  {% for message in messages %}
+  <script>
+    alert('{{message.message}}')
+  </script>
+  {% endfor %}
+{% endif %}
+{% endblock %}
