@@ -97,6 +97,7 @@ def pwComplete(req):
       return redirect('home')
   except FlowerUser.DoesNotExist:
     print('비번 변경 실패')
+    messages.info(req, '정보를 정확히 입력해주세요.')
     return redirect('pwChange')
 
 def withdrawal(req):
@@ -115,6 +116,7 @@ def withdrawalUser(req):
       return redirect('home')
   except FlowerUser.DoesNotExist:
     print('회원 탈퇴 실패')
+    messages.info(req, '정보를 정확히 입력해주세요.')
     return redirect('withdrawal')
 
 def mypage(req):
