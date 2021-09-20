@@ -3,12 +3,13 @@
   font-family: 'Gowun Dodum', sans-serif;
 }
 
-header {
-  background-color: white;
-}
-
 body {
   height: 100vh;
+  padding-top: 200px;
+}
+
+header {
+  background-color: white;
 }
 
 input, select {
@@ -36,12 +37,8 @@ a {
   color: black;
 }
 
-.mypage_:hover {
-  color: #39c979;
-}
-
 a:hover {
-  color: white;
+  color: #2A965B;
 }
 
 #id_div, #pw_div {
@@ -65,8 +62,16 @@ a:hover {
 }
 footer {
   text-align: center;
-  border-top: 1px solid black;
-  padding-top: 10px;
+  padding-top: 100px;
   font-size: 15px;
+  background-color: rgb(219, 219, 219);
+}
 
+footer li {
+  text-decoration: none;
+  list-style: none;
+}
+
+#footerBold li:first-child {
+  font-size: 2rem;
 }

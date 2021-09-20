@@ -1,13 +1,14 @@
 {% extends 'base.html' %}
 {% block menubar %}
-<div class="col-2">
-  <div><a href="{% url 'logout' %}" class="d-none" id="logOut" style="background-color: rgb(72, 167, 111);">로그아웃</a></div>
-  <div><a href="{% url 'mypage' %}" class="d-none" id="mypage" style="background-color: rgb(41, 74, 219);">마이페이지</a></div>
+<div class="col mb-2">
+  <span><a href="{% url 'logout' %}" class="d-none" id="logOut">로그아웃</a></span>
+  <span><a href="{% url 'mypage' %}" class="d-none" id="mypage">마이페이지</a></span>
+  <span class="fs-5"><a href="{% url 'home' %}"><i class="fas fa-shopping-cart" id="logo"></i></a></span>
 </div>
 {% endblock %}
 {% block content %}
+<h1 style="color: red;">Modal 작업 예정 입니다.</h1>
 <h1>{{infoUser.userid}} 님의 마이 페이지 입니다.</h1>
-
   <div>이름 : {{infoUser.userid}}</div>
   <div>아이디 : {{infoUser.username}}</div>
   <div>성별 : {{infoUser.gender}}</div>
