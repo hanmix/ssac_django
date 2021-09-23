@@ -9,7 +9,7 @@ body {
 }
 
 header {
-  background-color: white;
+  background-color: #eee1df;
 }
 
 input, select {
@@ -38,7 +38,7 @@ a {
 }
 
 a:hover {
-  color: #2A965B;
+  color: #74A674;
 }
 
 #id_div, #pw_div {
@@ -64,7 +64,7 @@ footer {
   text-align: center;
   padding-top: 100px;
   font-size: 15px;
-  background-color: rgb(219, 219, 219);
+  background-color: #DBDBDB;
 }
 
 footer li {
