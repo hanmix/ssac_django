@@ -1,16 +1,8 @@
 {% extends 'base.html' %}
-{% block menubar %}
-<div class="col mb-2">
-  <span><a href="{% url 'logout' %}" class="d-none" id="logOut">로그아웃</a></span>
-  <span><a href="{% url 'mypage' %}" class="d-none" id="mypage">마이페이지</a></span>
-  <span class="fs-5"><a href="{% url 'home' %}"><i class="fas fa-shopping-cart" id="logo"></i></a></span>
-</div>
-{% endblock %}
 {% block content %}
-<h1 style="color: red;">Modal 작업 예정 입니다.</h1>
 <h1>{{infoUser.userid}} 님의 마이 페이지 입니다.</h1>
-  <div>이름 : {{infoUser.userid}}</div>
-  <div>아이디 : {{infoUser.username}}</div>
+  <div>아이디 : {{infoUser.userid}}</div>
+  <div>이름 : {{infoUser.username}}</div>
   <div>성별 : {{infoUser.gender}}</div>
   <div>이메일 : {{infoUser.useremail}}</div>
   <div>주소 : {{infoUser.useraddress}}</div>
@@ -20,6 +12,8 @@
 
 {% if mypage %}
 <script>
+  $('#logIn').addClass('d-none')
+  $('#signUp').addClass('d-none')
   $('#logOut').removeClass('d-none')
   $('#mypage').removeClass('d-none')
 </script>

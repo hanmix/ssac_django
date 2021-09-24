@@ -1,13 +1,4 @@
 {% extends 'base.html' %}
-{% block menubar %}
-<div class="col mb-2">
-  <span><a href="{% url 'login' %}" id="logIn">로그인</a></span>
-  <span><a href="{% url 'signup' %}" id="signUp">회원가입</a></span>
-  <span><a href="{% url 'logout' %}" class="d-none" id="logOut">로그아웃</a></span>  
-  <span><a href="{% url 'mypage' %}" class="d-none" id="mypage">마이페이지</a></span>
-  <span class="fs-5"><a href="{% url 'home' %}"><i class="fas fa-shopping-cart" id="logo"></i></a></span>
-</div>
-{% endblock %}
 {% block content %}
 <section>
   <hr/>
@@ -33,7 +24,6 @@
   <ul style="color: rgb(197, 195, 72);" >
     <li>페이지 리뉴얼 작업</li>
     <li>UI 작업</li>
-    <li>회원가입, 로그인, 마이페이지 Modal화 작업</li>
   </ul>
   <hr/>
   <h2>Will do</h2>
@@ -41,14 +31,6 @@
     <li>장바구니</li>
   </ul>
 </section>
-{% if session %}
-<script>
-  $('#logIn').addClass('d-none')
-  $('#signUp').addClass('d-none')
-  $('#logOut').removeClass('d-none')
-  $('#mypage').removeClass('d-none')
-</script>
-{% endif %}
 {% if messages %}
   {% for message in messages %}
   <script>
