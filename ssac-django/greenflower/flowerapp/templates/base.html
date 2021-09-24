@@ -23,13 +23,8 @@
       <div class="col fs-1 py-2">
         <a href="{% url 'home' %}" class="home_link">Green Flower</a>
       </div>
-      <div class="col mb-2">
-        <span><a href="{% url 'login' %}" id="logIn">로그인</a></span>
-        <span><a href="{% url 'signup' %}" id="signUp">회원가입</a></span>
-        <span><a href="{% url 'logout' %}" class="d-none" id="logOut">로그아웃</a></span>  
-        <span><a href="{% url 'mypage' %}" class="d-none" id="mypage">마이페이지</a></span>
-        <span class="fs-5"><a href="{% url 'home' %}"><i class="fas fa-shopping-cart" id="logo"></i></a></span>
-      </div>
+      {% block menubar %}
+      {% endblock %}
     </nav>
   </header>
   {% block content %}
@@ -60,13 +55,5 @@
     </div>
   </footer>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
-  {% if session %}
-  <script>
-    $('#logIn').addClass('d-none')
-    $('#signUp').addClass('d-none')
-    $('#logOut').removeClass('d-none')
-    $('#mypage').removeClass('d-none')
-  </script>
-{% endif %}
 </body>
 </html>
