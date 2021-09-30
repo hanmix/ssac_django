@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section>
+  <hr/>
+  <h1>이곳은 메인페이지 입니다.</h1>
+  <hr/>
+  <h2>Done</h2>
+  <ul>
+    <li>회원가입</li>
+    <li>로그인</li>
+    <li>로그아웃</li>
+    <li>세션체크</li>
+    <li>비번변경</li>
+    <li>회원탈퇴</li>
+    <li>마이페이지</li>
+    <li>비번 유효성검사</li>
+    <li>아이디/비번 중복체크</li>
+    <li>아이디/비번/이메일 정규표현식 작업</li>
+    <li>회원가입 시 다음카카오 주소 API 작업</li>
+    <li>상단바 고정 작업</li>
+  </ul>
+  <hr/>
+  <h2>Doing</h2>
+  <ul style="color: rgb(197, 195, 72);" >
+    <li>페이지 리뉴얼 작업</li>
+    <li>UI 작업</li>
+    <li>회원가입, 로그인, 마이페이지 Modal화 작업</li>
+  </ul>
+  <hr/>
+  <h2>Will do</h2>
+  <ul style="color: red;">
+    <li>장바구니</li>
+  </ul>
+</section>
+{% if messages %}
+  {% for message in messages %}
+  <script>
+    alert('{{message.message}}')
+  </script>
+  {% endfor %}
+{% endif %}
+{% if logout %}
+<script>
+  alert('{{logout}}')
+</script>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+    <title>Green Flower</title>
+  </head>
+  <body class="container mt-5">
+    <section>
+      <form action='receive' method="POST" class="row"> 
+      {% csrf_token %}
+        <div class="col-12">
+          <h1 class="pb-5 text-center fw-bolder text-success">Green Flower 회원가입</h1>
+        </div>
+        <div class="my-3 col-6 pe-5">
+          <label for="exampleFormControlTextarea1" class="form-label"><strong>이름 : </strong></label>
+          <input type="text" class="form-control" id="exampleFormControlTextarea1" placeholder="홍길동" name="name" required>
+        </div>
+        <div class="my-3 col-6 ps-5">
+          <label for="exampleFormControlTextarea1" class="form-label"><strong>유저 ID : </strong></label>
+          <input type="text" class="form-control" id="exampleFormControlTextarea1" placeholder="greenflower123" name="ID" required>
+        </div>
+        <div class="my-3 col-6 pe-5">
+          <label for="exampleFormControlTextarea1" class="form-label"><strong>비밀번호 : </strong></label>
+          <input type="password" class="form-control" id="exampleFormControlTextarea1" placeholder="**********" name="PW" required>
+        </div>
+        <div class="my-3 col-6 ps-5">
+          <label for="exampleFormControlTextarea1" class="form-label "><strong>비밀번호 재확인: </strong></label>
+          <input type="password" class="form-control" id="exampleFormControlTextarea1" placeholder="**********" name="PWconfirm" required>
+        </div>
+        <div class="my-3 col-6 pe-5">
+          <label for="exampleFormControlTextarea1" class="form-label" name="birth"><strong>생년월일 : </strong></label>
+          <input type="text" class="form-control" id="exampleFormControlTextarea1" placeholder="ex) 1990.09.11" name="birth" required>
+        </div>
+        <div class="my-3 col-6 ps-5">
+          <strong>성별 : </strong>
+          <select class="form-select form-select-sm" aria-label=".form-select-sm example" name="gender">
+            <option selected>남성</option>
+            <option value="1">여성</option>
+          </select>
+        </div>
+        <div class="my-3 col-6 pe-5">
+          <label>배송주소</label>
+          <select name="address" id="city_select" onchange="select_address(this)">
+            <option id="city_option">지역을 선택하세요.</option>
+            <option value="seoul">서울특별시</option>
+            <option value="gyeonggi">경기도</option>
+          </select>
+          <select name="address" id="county_select">
+            <option id="county_option">지역을 선택하세요.</option>
+          </select>
+          <select name="address" id="town_select">
+            <option id="town_option">지역을 선택하세요.</option>
+          </select>
+        </div>  
+        <div class="my-3 col-6 ps-5">
+          <label for="exampleFormControlInput1" class="form-label"><strong>이메일 주소 : </strong></label>
+          <input type="email" class="form-control form-control-sm" id="exampleFormControlInput1" placeholder="name@example.com" name="email" required pattern="^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$">
+        </div>
+        <div class="row d-flex justify-content-center">
+          <button type="submit" class="my-3 ms-4 btn btn-success col-12 rounded-3">지금 바로 회원가입 하기</button>
+        </div>
+      </form>
+    </section>
+    <script>
+      function select_address(obj){
+        if(obj.value == "seoul"){
+          $('#county_select').append( `
+          <option value="gwanak-gu">관악구</option>
+          <option value="eunpyeong-gu">은평구</option>
+          <option value="dongjak-gu">동작구</option>
+          `);        
+          if ($('option').value = "gwanak-gu"){
+            $('#county_option').html($('#county_option').val());
+            $('#town_select').append(`
+            <option value="Sinsa-dong">신사동</option>
+            <option value="Sillim-dong">신림동</option>
+            `);
+          }
+        }
+        /**
+        else if(obj.value == "gyeonggi"){
+          document.getElementById("county_select").innerHTML = `
+          <option value="Hanam">하남시</option>
+          <option value="Cheonan">천안시</option>
+          `;
+        }*/
+    }
+    </script>
+  </body>
+</html>

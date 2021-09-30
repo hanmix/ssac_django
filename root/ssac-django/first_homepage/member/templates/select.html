@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Select 과제</title>
+</head>
+<body>
+  <form action="select" method="POST">
+    <label id="cute">귀여운</label>
+    <select name="animal" id="animal" onchange="select_animal(this)">
+      <option id="choice">선택하세요.</option>
+      <option value="puppy">강아지</option>
+      <option value="cat">고양이</option>
+    </select>
+    <select name="detail" id="detail">
+      <option value="choose" selected>선택하세요.</option>
+    </select>
+  </form>
+  <script>
+    function select_animal(obj){
+      if(obj.value == "puppy"){
+        document.getElementById("choice").innerHTML = document.getElementById('choice').value
+        document.getElementById("detail").innerHTML = `
+        <option name="sigol" value='sigol'>시고르자브종</option>
+        <option name="maltiz" value='maltiz'>말티즈</option>`;
+        console.log(document.getElementById("detail").value);
+      }
+      else if (obj.value == "cat"){
+        document.getElementById("choice"),innerHTML = document.getElementById('choice').value
+        document.getElementById("detail").innerHTML = `
+        <option value='gilcat'>길냥이</option>
+        <option value='russianblue'>러시안블루</option>`;
+        console.log(document.getElementById("detail").value);
+      }
+    }
+  </script>
+</body>
+</html>

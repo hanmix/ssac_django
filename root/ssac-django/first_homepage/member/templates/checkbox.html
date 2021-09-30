@@ -1,0 +1,11 @@
+<form action="checkReturn" method="POST">
+  {% csrf_token %}
+  <p>출력하고 싶은 내용을 선택하세요.</p>
+  <label for="id">id</label>
+  <input id="id" type="checkbox" name="print_" value="id">
+  <label for="name">name</label>
+  <input id="name" type="checkbox" name="print_" value="name">
+  <label for="nickname">nickname</label>
+  <input id="nickname" type="checkbox" name="print_" value="nickname">
+  <button>저장</button>
+</form>
