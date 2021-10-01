@@ -1,3 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
+* {
+  font-family: 'Gowun Dodum', sans-serif;
+}
+
 html,
 body {
   height: 100%;
@@ -9,6 +14,12 @@ body {
   padding-top: 40px;
   padding-bottom: 40px;
   background-color: #f5f5f5;
+}
+
+.logoFont {
+  padding: 0;
+  font-size: 50px;
+  font-weight: bolder;
 }
 
 .form-signin {
@@ -39,6 +50,15 @@ body {
 }
 
 #signUP {
-  color: black;
+  color: white;
   text-decoration: none;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+a:hover {
+  color: #74A674;
 }
