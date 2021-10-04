@@ -2,6 +2,7 @@ from django.http.response import HttpResponse
 from django.shortcuts import redirect, render
 from .models import FlowerUser
 from django.contrib import messages
+import re
 
 def home(req): # 메인으로 보여지는 페이지
   print(req.session.get('id')) # 서버에서 session 값 잘 받아오는지 확인
