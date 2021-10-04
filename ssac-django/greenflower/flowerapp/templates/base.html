@@ -13,10 +13,10 @@
 <body class="container-fluid mt-5">
   <header class="row link fixed-top d-flex align-items-center" id="top_menu">
     <nav class="nav_bar col">
-      <div class="col mb-2 text-end me-3 mt-3">
-        <span><a href="{% url 'login' %}" id="logIn">로그인</a></span>
+      <div class="col mb-2 text-end me-5 mt-3">
+        <span><a href="{% url 'login' %}" class="me-2" id="logIn">로그인</a></span>
         <span><a href="{% url 'logout' %}" class="d-none" id="logOut">로그아웃</a></span>  
-        <span><a href="{% url 'mypage' %}" class="d-none" id="mypage">마이페이지</a></span>
+        <span><a href="{% url 'mypage' %}" class="d-none mx-2" id="mypage">마이페이지</a></span>
         <span><a href="{% url 'home' %}">장바구니</a></span>
       </div>
       <div class="col fs-1 py-2 text-center">
@@ -63,22 +63,22 @@
   <script>
     mybutton = document.getElementById("myBtn");
 
-// When the user scrolls down 20px from the top of the document, show the button
-window.onscroll = function() {scrollFunction()};
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {scrollFunction()};
 
-function scrollFunction() {
-  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-    mybutton.style.display = "block";
-  } else {
-    mybutton.style.display = "none";
-  }
-}
+    function scrollFunction() {
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        mybutton.style.display = "block";
+      } else {
+        mybutton.style.display = "none";
+      }
+    }
 
-// When the user clicks on the button, scroll to the top of the document
-function topFunction() {
-  document.body.scrollTop = 0; // For Safari
-  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-}
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+      document.body.scrollTop = 0; // For Safari
+      document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    }
   </script>
   {% if session %}
 <script>
