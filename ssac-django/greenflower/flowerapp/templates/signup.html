@@ -20,19 +20,19 @@
         <h1 class="h3 mb-3 fw-normal">회원가입</h1>
       </article>
       <article class="form-floating">
-        <input type="text" class="form-control inputSize" name="id" id="id" placeholder="영문 또는 영문, 숫자 3~10자" pattern="^[가-힣A-Za-z0-9]{2,10}$">
+        <input type="text" class="form-control inputSize" name="id" id="id" placeholder="한글, 영문, 숫자 3~10자" pattern="^[가-힣A-Za-z0-9]{2,10}$">
         <label for="id">아이디</label>
         <div class="mt-2">
-          <button class="form-control btn btn-outline-success btnSize" type="button" id="idck" onclick="idcks()">중복체크</button>
+          <button class="form-control btn btnSize" style="background-color:rgb(221, 184, 173)" type="button" id="idck" onclick="idcks()">중복체크</button>
         </div>
         <div class="mt-1" id="id_div"></div>
       </article>
       <article class="form-floating">
-        <input type="password" class="form-control pw inputSize" name="pw" id="pw1"   placeholder="영문, 숫자 포함 8~20자" pattern="^[a-zA-Z0-9]{8,20}$">
+        <input type="password" class="form-control pw inputSize" name="pw" id="pw1"   placeholder="영문, 숫자 포함 8~20자" pattern="^[a-zA-Z0-9]{7,20}$">
         <label for="pw1">비밀번호</label> 
       </article>
       <article class="form-floating">
-        <input type="password" class="form-control pw inputSize" name="pw2" id="pw2" placeholder="비밀번호를 재입력해주세요." pattern="^[a-zA-Z0-9]{8,20}$">
+        <input type="password" class="form-control pw inputSize" name="pw2" id="pw2" placeholder="비밀번호를 재입력해주세요." pattern="^[a-zA-Z0-9]{7,20}$">
         <label for="pw2">비밀번호 확인</label>        
         <div class="mt-1" id="pw_div"></div>
       </article>
@@ -41,7 +41,6 @@
         <label for="email">이메일 주소</label>        
       </article>
       <article class="form-floating mt-3">
-        
         <div>
           <label class="text-start">배송 주소</label>
           <input type="text" class="form-control" name="address" id="address_kakao" placeholder="클릭해서 주소 찾기" readonly>
@@ -50,9 +49,11 @@
           <input type="text" class="form-control" name="address_detail" placeholder="상세 주소">
         </div>
       </article>
-      <button class="w-100 btn btn-lg btn-success">회원가입</button>
+      <button class="w-100 btn btn-lg" style="background-color:rgb(221, 184, 173)">회원가입</button>
     </section>
   </form>
+
+  <!--카카오지도 API-->
   <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
   <script>
     window.onload = function(){
@@ -66,6 +67,7 @@
           }).open();
       });
   }
+  /*아이디 중복체크 버튼*/
     function idcks(){
       $.post(
       "idCk",
@@ -76,6 +78,7 @@
       }
     );
   };
+  /*비밀번호 더블체크*/
     $('.pw').focusout(function () {
       $.post(
         "pwCk",
@@ -86,6 +89,7 @@
       )
     });
   </script>
+  <!--회원정보 미입력 시 alert 출력-->
   {% for message in messages %}
   <script>
     alert('{{message.message}}')

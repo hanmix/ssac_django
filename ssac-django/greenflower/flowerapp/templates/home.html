@@ -5,9 +5,7 @@
 <head>
   <link rel="stylesheet" href="{% static 'css/base.css' %}">
 </head>
-
 <main>
-
   <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
       <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="" aria-label="Slide 1"></button>
@@ -103,7 +101,7 @@
 
   </div><!-- /.container -->
 </main>
-
+<!--각종 alert 출력-->
 {% if messages %}
   {% for message in messages %}
   <script>
@@ -111,6 +109,7 @@
   </script>
   {% endfor %}
 {% endif %}
+<!--로그아웃-->
 {% if logout %}
 <script>
   alert('{{logout}}')
