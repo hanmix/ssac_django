@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>채팅</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.4/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+  </head>    
+<style>
+/* 메인 */
+#main {
+  margin: auto;
+  margin-top: 100px;
+  border-radius: 20px;
+  background-color: lightblue;
+  text-align: center;
+  width: 500px;
+  height: 800px;
+}
+
+/* 채팅 영역 */
+#chat {
+  height: 80%;
+  width: 100%;
+  overflow-y: auto;
+}
+
+/* 접속 알림 */
+.connect {
+  width: 90%;
+  margin: auto;
+  background-color: aquamarine;
+  text-align: center;
+  margin-top: 10px;
+  font-style: italic;
+  border-radius: 5px;
+}
+
+/* 접속 종료 알림 */
+.disconnect {
+  width: 90%;
+  margin: auto;
+  background-color: indianred;
+  text-align: center;
+  margin-top: 10px;
+  font-style: italic;
+  border-radius: 5px;
+}
+
+/* 내가 보낸 메시지 */
+.me {
+  width: 90%;
+  margin: auto;
+  background-color: lemonchiffon;
+  border-radius: 5px;
+  margin-top: 10px;
+  text-align: right;
+}
+
+/* 상대방이 보낸 메시지 */
+.other {
+  width: 90%;
+  margin: auto;
+  background-color: white;
+  border-radius: 5px;
+  margin-top: 10px;
+  text-align: left;
+}
+
+#inputArea {
+  width: 100%;
+  height: 20%;
+  overflow-y: auto;
+  background-color: rgb(255, 228, 225);
+  border-top: 1px solid white;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+#funcTap {
+  background-color: rgba(225, 228, 225, 0.7);
+  width: 100%;
+  height: 15%;
+  border-bottom: 1px solid white;
+}
+
+#message {
+  width: 90%;
+  height: calc(100% - 30px);
+  border: none;
+  padding-bottom: 0;
+  background-color: transparent;
+}
+
+#message:focus {
+  outline: none;
+}
+</style>
+
+
+  <body>
+    <div id="main">
+      <div id="chat">
+        <!-- 채팅 메시지 영역 -->
+      </div>
+      <div id="inputArea">
+        <div id="funcTap"></div>
+        <input type="text" id="message" placeholder="메시지를 입력하세요." onkeypress="send()">
+      </div>
+    </div>
+  </body>
+
+
+
+  <script>
+    var socket = io.connect();
+
+    /* 접속 되었을 때 실행 */
+    socket.on('connect', () => {
+      /* 이름을 입력받고 */
+      var name = prompt('반갑습니다!', '')
+    
+      /* 이름이 빈칸인 경우 */
+      if(!name) {
+        name = '익명'
+      }
+    
+      /* 서버에 새로운 유저가 왔다고 알림 */
+      socket.emit('newUser', name)
+    })
+    
+    // 서버 시간 전역변수 세팅
+    var severTime;
+
+    /* 서버로부터 데이터 받은 경우 */
+    socket.on('update', (data) => {
+      severTime = data.time;
+      var chat = document.getElementById('chat')
+      var message = document.createElement('div')
+      var node = document.createTextNode(`${data.name} : ${data.message} (${severTime})`)
+      var className = ''
+      
+    
+      // 타입에 따라 적용할 클래스를 다르게 지정
+      switch(data.type) {
+        case 'message':
+          className = 'other'
+          break
+    
+        case 'connect':
+          className = 'connect'
+          break
+    
+        case 'disconnect':
+          className = 'disconnect'
+          break
+      }
+    
+      message.classList.add(className)
+      message.appendChild(node)
+      chat.appendChild(message)
+      $('#chat').scrollTop($('#chat')[0].scrollHeight);
+    })
+    
+    /* 메시지 전송 함수 */
+    function send() {
+      if(event.keyCode == 13){
+        // 입력되어있는 데이터 가져오기
+        var message = document.getElementById('message').value
+        
+        // 가져왔으니 데이터 빈칸으로 변경
+        document.getElementById('message').value = ''
+        
+        // 내가 전송할 메시지 클라이언트에게 표시
+        var chat = document.getElementById('chat');
+        var msg = document.createElement('div');
+        var node = document.createTextNode('나 : ' + message + ' (' + severTime + ')');
+        msg.classList.add('me')
+        msg.appendChild(node)
+        chat.appendChild(msg)
+        $('#chat').scrollTop($('#chat')[0].scrollHeight);
+        // 서버로 message 이벤트 전달 + 데이터와 함께
+        socket.emit('message', {type: 'message', message: message})
+        console.log(message);
+      };
+    }
+  </script> 
+</html>
