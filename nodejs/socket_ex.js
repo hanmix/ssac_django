@@ -13,11 +13,19 @@ app.get("/chat", (req, res) => {
 
 
 // 현재시간 설정 모듈
-var moment = require('moment');
-require('moment-timezone');
-moment.tz.setDefault("Asia/Seoul");
-var timeZone = moment().format('HH:mm:ss')
-console.log("현재 시간은 " + timeZone + " 입니다.");
+function getTime() {
+  const now = new Date();
+  const hours = now.getHours() < 10 ? "0" + now.getHours() : now.getHours();
+  const minutes = now.getMinutes() < 10 ? "0" + now.getMinutes() : now.getMinutes();
+  const seconds = now.getSeconds() < 10 ? "0" + now.getSeconds() : now.getSeconds();
+  return `${hours}:${minutes}:${seconds}`
+}
+
+// var moment = require('moment');
+// require('moment-timezone');
+// moment.tz.setDefault("Asia/Seoul");
+// var timeZone = moment().format('HH:mm:ss')
+// console.log("현재 시간은 " + timeZone + " 입니다.");
 
 // 채팅 참가자 리스트 관리 => {소켓아이디 : 닉네임} 구조
 let nick_array = [];

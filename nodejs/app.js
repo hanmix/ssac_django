@@ -10,9 +10,10 @@ const session = require( 'express-session' );
 const cookie = require( 'cookie-parser' );
 
 const conn = mysql.createConnection({
-	user: 'root',
-	password: 'root',
-	database: 'nodeDB'
+	host: 'aws-hansm-db.cwc3rsqsjzbq.ap-northeast-2.rds.amazonaws.com',
+  user: 'admin',
+	password: 'rootadmin',
+	database: 'ssac_data'
 });
 
 // 뷰엔진 설정

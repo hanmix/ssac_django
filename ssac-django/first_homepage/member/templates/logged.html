@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>로그인 성공</title>
+</head>
+<body>
+  <form action="{% url 'logout' %}" method="POST">
+    {% csrf_token %}
+      <h1>{{id}} 님 반갑습니다.</h1>
+{% for member in total_member %}
+	이름 : {{member.username}}
+  아이디 : {{member.userid}}
+  비밀번호 : {{member.password}}
+  성별 : {{member.gender}}
+{% endfor %}
+    <button type="submit">로그아웃</button>
+  </form>
+<button><a href="{% url 'member_del' %}">믿기 어려운 회원탈퇴 하러가기 ㅠㅠ</a></button>
+</body>
+</html>

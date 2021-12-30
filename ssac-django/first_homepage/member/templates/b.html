@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+    <style>
+      a {
+        text-decoration: none;
+        color: black;
+      }
+    </style>
+    <title>Green Flower</title>
+  </head>
+  <body class="container mt-5">
+    <section>
+      <article class="mx-5">
+        <div class="text-center mb-5 fw-bolder text-success display-5 rounded-3">
+        회원가입을 축하합니다!
+        </div>
+        <div>
+          <div class="my-5 fs-4">아래의 내역을 확인하여 주세요!</div>
+        </div>
+      </article>
+      <article class="mx-5 row">
+        <div class="fw-bolder py-4 col-4">
+          이름 : {{name}}
+        </div>
+        <div class="fw-bolder py-4 col-4">
+          유저 ID : {{ID}}
+        </div>
+        <div class="fw-bolder py-4 col-4">
+          비밀번호 : {{PW}}
+        </div>
+        <div class="fw-bolder py-4 col-4">
+          생년월일 : {{birth}}
+        </div>
+        <div class="fw-bolder py-4 col-4">
+          성별 : {{gender}}
+        </div>
+        <div class="fw-bolder py-4 col-4">
+          이메일 : {{email}}
+        </div>
+        <div class="fw-bolder py-4 col-12">
+          배송 주소 : {{address}}
+        </div>
+      </article>
+      <article class="d-flex justify-content-center text-center text-success m-5 py-1 row rounded-3">
+        <button type="submit" class="my-3 btn btn-success col-6">오늘 배송 받을 꽃 고르러 가기</button>
+      </article>
+    <section>
+  </body>
+</html>

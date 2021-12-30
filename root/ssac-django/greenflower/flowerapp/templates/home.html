@@ -1,38 +1,107 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<section>
-  <hr/>
-  <h1>이곳은 메인페이지 입니다.</h1>
-  <hr/>
-  <h2>Done</h2>
-  <ul>
-    <li>회원가입</li>
-    <li>로그인</li>
-    <li>로그아웃</li>
-    <li>세션체크</li>
-    <li>비번변경</li>
-    <li>회원탈퇴</li>
-    <li>마이페이지</li>
-    <li>비번 유효성검사</li>
-    <li>아이디/비번 중복체크</li>
-    <li>아이디/비번/이메일 정규표현식 작업</li>
-    <li>회원가입 시 다음카카오 주소 API 작업</li>
-    <li>상단바 고정 작업</li>
-  </ul>
-  <hr/>
-  <h2>Doing</h2>
-  <ul style="color: rgb(197, 195, 72);" >
-    <li>페이지 리뉴얼 작업</li>
-    <li>UI 작업</li>
-    <li>회원가입, 로그인, 마이페이지 Modal화 작업</li>
-  </ul>
-  <hr/>
-  <h2>Will do</h2>
-  <ul style="color: red;">
-    <li>장바구니</li>
-  </ul>
-</section>
+{% load static %}
+<head>
+  <link rel="stylesheet" href="{% static 'css/base.css' %}">
+</head>
+<main>
+  <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2" class="active" aria-current="true"></button>
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3" class=""></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item">
+        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"><img src="https://cdn.pixabay.com/photo/2013/07/02/22/20/bouquet-142876_1280.jpg" alt="Flower"></rect></svg>
+
+        <div class="container">
+          <div class="carousel-caption"></div>
+        </div>
+      </div>
+
+      <div class="carousel-item active">
+        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"><img src="https://cdn.pixabay.com/photo/2017/08/10/01/00/woman-2616658_1280.jpg" alt="Basket"></rect></svg>
+
+        <div class="container">
+          <div class="carousel-caption"></div>
+        </div>
+      </div>
+
+      <div class="carousel-item">
+        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"><img src="https://cdn.pixabay.com/photo/2018/05/12/23/22/still-life-3394843_1280.jpg" alt=""></rect></svg>
+
+        <div class="container">
+          <div class="carousel-caption"></div>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+
+  <!-- Marketing messaging and featurettes
+  ================================================== -->
+  <!-- Wrap the rest of the page in another container to center all the content. -->
+
+  <div class="container marketing">
+    <!-- START THE FEATURETTES -->
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+      <div class="col-md-7">
+        <h2 class="featurette-heading py-3">눈길마다 꽃향기를 띄우세요!</h2>
+        <div class="text-muted fs-2 py-3">Regular Delivery Service</div>
+        <p class="lead">정기배송으로 1주 또는 2주마다 눈이 즐거워지는 향기를 만끽하세요!</p>
+      </div>
+      <div class="col-md-5">
+        <img src="https://cdn.pixabay.com/photo/2018/01/09/22/51/roses-3072698_1280.jpg" width="500" height="500" alt="">
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+      <div class="col-md-7 order-md-2">
+        <h2 class="featurette-heading">싱싱한 생화를 당일 배송으로 빠르게!</h2>
+        <div class="text-muted fs-2 py-3">Fresh Delivery Service</div>
+        <p class="lead">Green Flower만의 전국 체인 시스템으로 싱싱한 생화를 당일 배송 받으세요!</p>
+      </div>
+      <div class="col-md-5 order-md-1">
+        <img src="https://cdn.pixabay.com/photo/2015/06/25/19/08/roses-821705__340.jpg" width="500" height="500" alt="">
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+      <div class="col-md-7">
+        <h2 class="featurette-heading">매일매일을 기념일처럼!</h2>
+        <div class="text-muted fs-2 py-3">Everyday So Special!</div>
+        <p class="lead">싱그러운 꽃과 함께 평범한 하루를 특별한 기념일처럼 보내세요!</p>
+      </div>
+      <div class="col-md-5">
+        <img src="https://cdn.pixabay.com/photo/2021/09/19/12/19/animal-6637774_1280.jpg" width="500" height="500" alt="">
+
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <!-- /END THE FEATURETTES -->
+
+  </div><!-- /.container -->
+</main>
+<!--각종 alert 출력-->
 {% if messages %}
   {% for message in messages %}
   <script>
@@ -40,6 +109,7 @@
   </script>
   {% endfor %}
 {% endif %}
+<!--로그아웃-->
 {% if logout %}
 <script>
   alert('{{logout}}')

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>회원가입 성공</title>
+</head>
+<body>
+  <h1>회원가입 성공하였습니다.</h1>
+{% for member in join_member %}
+	아이디 : {{member.userid}}
+	이름 : {{member.username}}
+  비밀번호 : {{member.password}}
+  성별 : {{member.gender}}
+{% endfor %}
+
+<a href="{% url 'login' %}">로그인 하러 가기</a>
+</body>
+</html>

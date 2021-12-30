@@ -97,20 +97,22 @@
 }
 </style>
 
-
   <body>
     <div id="main">
       <div id="chat">
         <!-- 채팅 메시지 영역 -->
       </div>
       <div id="inputArea">
-        <div id="funcTap"></div>
+        <div id="funcTap">
+          <form action="chat" method="post" enctype="multipart/form-data">
+            <input type="file" name="userfile">
+            <input type="submit" value="전송" onclick="picSend()">
+          </form>
+        </div>
         <input type="text" id="message" placeholder="메시지를 입력하세요." onkeypress="send()">
       </div>
     </div>
   </body>
-
-
 
   <script>
     var socket = io.connect();
@@ -183,6 +185,11 @@
         socket.emit('message', {type: 'message', message: message})
         console.log(message);
       };
+    }
+
+    function picSend() {
+      //ajax로 form 전송 넘기기
+      
     }
   </script> 
 </html>

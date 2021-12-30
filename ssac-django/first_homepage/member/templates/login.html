@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    a, button {
+      text-decoration: none;
+      color:green;
+    }
+  </style>
+  <title>로그인 입력</title>
+</head>
+<body>
+  
+  <form action="logged" method="POST">
+    {% csrf_token %}
+    <h1>로그인 하기</h1>
+    이름 : <input type="text" name="name" required>
+    아이디 : <input type="text" name="id" required>
+    비밀번호 : <input type="password" name="pw" required>
+    성별 : <select name="gender" id="gender" required>
+      <option value="" selected>선택하세요.</option>
+      <option value="M">남성</option>
+      <option value="W">여성</option>
+    </select>
+    <button>로그인</button>
+    <button><a href="{% url 'pw_update' %}">비밀번호 변경하기</a></button>
+    <h1>네??? 아직 계정이 없다구요오???????????</h1>
+    <button><a href="{% url 'join' %}">지금 당장 회원가입 하러 가기</a></button>
+    </form>
+  </form>
+  {% if login %}
+  <script>
+      alert("{{ login }}");
+  </script>
+    {% endif %}
+    {% if logout %}
+  <script>
+      alert("{{ logout }}");
+  </script>
+  {% endif %}
+</body>
+</html>
